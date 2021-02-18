@@ -18,9 +18,9 @@ RUN chmod +x /entrypoint.sh
 ADD ["loginsystem/SQL File/loginsystem.sql", "/tmp/loginsystem.sql"]
 RUN /etc/init.d/mysql start && mysql -e "CREATE DATABASE loginsystem;"
 RUN /etc/init.d/mysql start && mysql -D loginsystem < /tmp/loginsystem.sql
-#RUN rm -f /tmp/loginsystem.sql
-RUN rm /tmp/loginsystem.sql
+RUN rm -f /tmp/loginsystem.sql
 
+ADD ./exploit.py /exploit.py
 
 EXPOSE 8080:8080
 
